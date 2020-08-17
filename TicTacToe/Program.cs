@@ -106,7 +106,7 @@ namespace TicTacToe
 
         }
 
-        static int validate(Regex regex1, Regex regex2, String input)
+        static int validate(Regex regex1, Regex regex2, String input) //Validate input
         {
             while ((regex1.IsMatch(input)) || (regex2.IsMatch(input)) || (input == "") || (input.Length > 1) || (input == "0"))
             {
@@ -121,7 +121,7 @@ namespace TicTacToe
                 input = Console.ReadLine();
             }
             return (int.Parse(input));
-        } //Validate input
+        } 
         static void winDisplay(int i) //Dipslay winner
         {
             String PlayerWin="";
@@ -168,7 +168,7 @@ namespace TicTacToe
             }
         }
 
-        static void displayHelp(String[] box)
+        static void displayHelp(String[] box) //Display of instructions
         {
             Console.WriteLine("==================================================================================================");
             Console.WriteLine("HOW TO PLAY");
@@ -182,7 +182,7 @@ namespace TicTacToe
             initing(box);
             display(box);
             Console.WriteLine("==================================================================================================");
-        } //Display of instructions
+        } 
 
         static void Main(string[] args)
         {
