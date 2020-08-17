@@ -6,6 +6,7 @@ namespace TicTacToe
 
     static class winner
     {
+        //Global Variables to store the times the players win for the leaderboard
         public static int winner1 = 0;
         public static int winner2 = 0;
     }
@@ -120,8 +121,8 @@ namespace TicTacToe
                 input = Console.ReadLine();
             }
             return (int.Parse(input));
-        }
-        static void winDisplay(int i)
+        } //Validate input
+        static void winDisplay(int i) //Dipslay winner
         {
             String PlayerWin="";
             Console.WriteLine("#####################");
@@ -181,7 +182,7 @@ namespace TicTacToe
             initing(box);
             display(box);
             Console.WriteLine("==================================================================================================");
-        }
+        } //Display of instructions
 
         static void Main(string[] args)
         {
