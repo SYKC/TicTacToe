@@ -23,11 +23,11 @@ namespace TicTacToe
         static void display(String[] box) //Display the boxes in grid form
         {
             Console.WriteLine();
-            Console.WriteLine("{0} | {1} | {2} ", box[7], box[8], box[9]);
-            Console.WriteLine("----------");
-            Console.WriteLine("{0} | {1} | {2} ", box[4], box[5], box[6]);
-            Console.WriteLine("----------");
-            Console.WriteLine("{0} | {1} | {2} ", box[1], box[2], box[3]);
+            Console.WriteLine(" {0} | {1} | {2} ", box[7], box[8], box[9]);
+            Console.WriteLine("---+---+---");
+            Console.WriteLine(" {0} | {1} | {2} ", box[4], box[5], box[6]);
+            Console.WriteLine("---+---+---");
+            Console.WriteLine(" {0} | {1} | {2} ", box[1], box[2], box[3]);
             Console.WriteLine();
         }
 
@@ -69,7 +69,7 @@ namespace TicTacToe
             return terminate;
         }
 
-        static void playing(int i, string[] box) //Putting O or X in the boxes
+        static void playing(int i, string[] box,Regex regex1,Regex regex2) //Putting O or X in the boxes
         {
             if ((i % 2) == 0) //to output O or X
             {
@@ -83,8 +83,6 @@ namespace TicTacToe
             Console.Write("Enter the boxnum: ");
 
             String input = Console.ReadLine();
-            Regex regex1 = new Regex("^[a-zA-Z]");
-            Regex regex2 = new Regex(@"\W|_");
 
             //Verify that input is not alphabet or symbol or empty
             int x = validate(regex1, regex2, input);
@@ -142,11 +140,11 @@ namespace TicTacToe
            
         }
 
-        static void play(Boolean terminate, int i, String[] box, Boolean draw) //Play and check for draw
+        static void play(Boolean terminate, int i, String[] box, Boolean draw,Regex regex1,Regex regex2) //Play and check for draw
         {
             while (terminate != true)
             {
-                playing(i, box);
+                playing(i, box,regex1,regex2);
                 display(box);
                 if (i > 3 && i <= 8)
                 {
@@ -169,6 +167,22 @@ namespace TicTacToe
             }
         }
 
+        static void displayHelp(String[] box)
+        {
+            Console.WriteLine("==================================================================================================");
+            Console.WriteLine("HOW TO PLAY");
+            Console.WriteLine("__________________________________________________________________________________________________");
+            Console.WriteLine();
+            Console.WriteLine("1. The game is played on a grid that's 3 squares by 3 squares labelled from 1 to 9.");
+            Console.WriteLine("2. Players take turns putting their marks(O/X) in empty squares.");
+            Console.WriteLine("3. The first player to get 3 of her marks in a row(up, down, across, or diagonally) is the winner.");
+            Console.WriteLine("4. When all 9 squares are full, the game is over.If no player has 3 marks in a row,\n   the game ends in a tie.");
+
+            initing(box);
+            display(box);
+            Console.WriteLine("==================================================================================================");
+        }
+
         static void Main(string[] args)
         {
             String[] box = new String[10];
@@ -176,30 +190,60 @@ namespace TicTacToe
 
             Boolean terminate = false;
             Boolean draw = false;
-            display(box);
-            int i = 0;
-            int choice=1;
 
-            while (choice == 1)
+            Console.WriteLine("Welcome to Tic Tac Toe!");
+            Console.WriteLine();
+
+            Regex regex1 = new Regex("^[a-zA-Z]");
+            Regex regex2 = new Regex(@"\W|_");
+            Regex regex3 = new Regex("^[0-2]");
+
+            int i = 0;
+            int choice=0;
+            
+            while (choice !=2)
             {
-                play(terminate, i, box, draw);
+                if (choice == 0)
+                {
+                    displayHelp(box);
+                }
+                else
+                {
+                    play(terminate, i, box, draw,regex1,regex2);
+                    Console.WriteLine();
+                    Console.WriteLine("-----------------");
+                    Console.WriteLine("---LEADERBOARD---");
+                    Console.WriteLine("-----------------");
+                    Console.WriteLine("Player 1 : {0}", winner.winner1);
+                    Console.WriteLine("Player 2 : {0}", winner.winner2);
+                    Console.WriteLine();
+                }
                 Console.WriteLine();
-                Console.WriteLine("-----------------");
-                Console.WriteLine("---Leaderboard---");
-                Console.WriteLine("-----------------");
-                Console.WriteLine("Player 1 : {0}", winner.winner1);
-                Console.WriteLine("Player 2 : {0}", winner.winner2);
-                Console.WriteLine();
-                Console.WriteLine("Play again, Input 1.");
+                Console.WriteLine("------------------");
+                Console.WriteLine("-------MENU-------");
+                Console.WriteLine("------------------");
+                if (choice != 0)
+                {
+                    Console.WriteLine("Help. Input 0.");
+                }
+                Console.WriteLine("Play, Input 1.");
                 Console.WriteLine("Exit, Input 2.");
-                
-                choice = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Choice: ");
+                String input = Console.ReadLine();
+
+                while (!(regex3.IsMatch(input))||(input.Length > 1))
+                {
+                    Console.Write("Invalid Choice. Input Choice Again: ");
+                    input = Console.ReadLine();
+                }
+
+                choice = Convert.ToInt32(input);
                 if (choice ==1)
                 {
                     initing(box);
                     Console.WriteLine();
                     Console.WriteLine("-----------------");
-                    Console.WriteLine("----New  Game----");
+                    Console.WriteLine("----NEW GAME----");
                     Console.WriteLine("-----------------");
                     display(box);
                 }
