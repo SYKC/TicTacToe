@@ -1,0 +1,14 @@
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\hostpolicy.dll
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\hostfxr.dll
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\TicTacToe.exe
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\TicTacToe.deps.json
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\TicTacToe.runtimeconfig.json
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\TicTacToe.runtimeconfig.dev.json
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\TicTacToe.dll
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\bin\Release\netcoreapp2.1\win-x64\TicTacToe.pdb
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\obj\Release\netcoreapp2.1\win-x64\TicTacToe.csprojAssemblyReference.cache
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\obj\Release\netcoreapp2.1\win-x64\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\obj\Release\netcoreapp2.1\win-x64\TicTacToe.AssemblyInfoInputs.cache
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\obj\Release\netcoreapp2.1\win-x64\TicTacToe.AssemblyInfo.cs
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\obj\Release\netcoreapp2.1\win-x64\TicTacToe.dll
+C:\Users\syongkwe\source\repos\TicTacToe\TicTacToe\obj\Release\netcoreapp2.1\win-x64\TicTacToe.pdb
