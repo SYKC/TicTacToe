@@ -70,7 +70,7 @@ namespace TicTacToe
             return terminate;
         }
 
-        static void playing(int i, string[] box,Regex regex1,Regex regex2) //Putting O or X in the boxes
+        static void playing(int i, string[] box) //Putting O or X in the boxes
         {
             if ((i % 2) == 0) //to output O or X
             {
@@ -81,18 +81,18 @@ namespace TicTacToe
             {
                 Console.WriteLine("-> X turn <-");
             }
-            Console.Write("Enter the boxnum: ");
+            Console.Write("In which box do you want to play: ");
 
             String input = Console.ReadLine();
 
             //Verify that input is not alphabet or symbol or empty
-            int x = validate(regex1, regex2, input);
+            int x = validate(input);
 
             while (((box[x] == "O") || (box[x] == "X")))
             {
                 Console.Write("Invalid move. Please input empty box: ");
                 input = Console.ReadLine();
-                x = validate(regex1, regex2, input);
+                x = validate(input);
             }
 
             if ((i % 2) == 0)
@@ -106,15 +106,18 @@ namespace TicTacToe
 
         }
 
-        static int validate(Regex regex1, Regex regex2, String input) //Validate input
+        static int validate(String input) //Validate input
         {
-            while ((regex1.IsMatch(input)) || (regex2.IsMatch(input)) || (input == "") || (input.Length > 1) || (input == "0"))
+            Regex regex1 = new Regex("^[a-zA-Z]");
+            Regex regex2 = new Regex(@"\W|_");
+            Regex regex4 = new Regex("^[1-9]{1}$");
+            while (!(regex4.IsMatch(input)))
             {
                 if (((regex1.IsMatch(input)) || (regex2.IsMatch(input)) || (input == "")))
                 {
                     Console.Write("Invalid input. Input Again: ");
                 }
-                if ((input.Length > 1) || (input == "0"))
+                else if ((input.Length > 1) || (input == "0"))
                 {
                     Console.Write("Number not in range. Input Again: ");
                 }
@@ -141,11 +144,11 @@ namespace TicTacToe
            
         }
 
-        static void play(Boolean terminate, int i, String[] box, Boolean draw,Regex regex1,Regex regex2) //Play and check for draw
+        static void play(Boolean terminate, int i, String[] box, Boolean draw) //Play and check for draw
         {
             while (terminate != true)
             {
-                playing(i, box,regex1,regex2);
+                playing(i, box);
                 display(box);
                 if (i > 3 && i <= 8)
                 {
@@ -193,11 +196,10 @@ namespace TicTacToe
             Boolean draw = false;
 
             Console.WriteLine("Welcome to Tic Tac Toe!");
-            Console.WriteLine();
 
-            Regex regex1 = new Regex("^[a-zA-Z]");
-            Regex regex2 = new Regex(@"\W|_");
-            Regex regex3 = new Regex("^[0-2]");
+
+            
+            Regex regex3 = new Regex("^[0-2]{1}$");
 
             int i = 0;
             int choice=0;
@@ -206,11 +208,12 @@ namespace TicTacToe
             {
                 if (choice == 0)
                 {
+                    Console.WriteLine();
                     displayHelp(box);
                 }
                 else
                 {
-                    play(terminate, i, box, draw,regex1,regex2);
+                    play(terminate, i, box, draw);
                     Console.WriteLine();
                     Console.WriteLine("-----------------");
                     Console.WriteLine("---LEADERBOARD---");
@@ -232,7 +235,7 @@ namespace TicTacToe
                 Console.Write("Choice: ");
                 String input = Console.ReadLine();
 
-                while (!(regex3.IsMatch(input))||(input.Length > 1))
+                while (!(regex3.IsMatch(input)))
                 {
                     Console.Write("Invalid Choice. Input Choice Again: ");
                     input = Console.ReadLine();
